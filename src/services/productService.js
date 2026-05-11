@@ -1,18 +1,21 @@
-import MOCK_PRODUCTS from "../mockdata/mock_products";
+import axios from "axios";
 
 export const getProducts = async () => {
-  // TODO ESTUDIANTE:
-  // Reemplaza este retorno local por FakeStore API.
-  // Ejemplo esperado: GET https://fakestoreapi.com/products
-  return [...MOCK_PRODUCTS].sort((a, b) => Number(a.id) - Number(b.id));
+  const response = await axios.get(
+    "https://fakestoreapi.com/products"
+  );
+
+  return response.data;
 };
 
 export const getProductById = async (id) => {
-  // TODO ESTUDIANTE:
-  // Reemplaza esta busqueda local por FakeStore API.
-  // Ejemplo esperado: GET https://fakestoreapi.com/products/{id}
-  const product = MOCK_PRODUCTS.find(
-    (item) => Number(item.id) === Number(id),
-  );
-  return product ?? null;
+  try {
+    const response = await axios.get(
+      `https://fakestoreapi.com/products/${id}`
+    );
+
+    return response.data;
+  } catch {
+    return null;
+  }
 };
