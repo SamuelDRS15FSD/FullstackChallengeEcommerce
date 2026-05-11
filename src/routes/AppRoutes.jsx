@@ -2,26 +2,26 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "../components/templates/Layout";
 
-import Gallery from "../components/organisms/gallery/Gallery";
-import Login from "../components/organisms/login/Login";
-import Register from "../components/organisms/register/Register";
-import Profile from "../components/organisms/profile/Profile";
-import ProductDetail from "../components/organisms/productDetail/ProductDetail";
-import Cart from "../components/organisms/cart/Cart";
-import Checkout from "../components/organisms/checkout/Checkout";
+import GalleryPage from "../pages/GalleryPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+import ProfilePage from "../pages/ProfilePage";
+import ProductDetailPage from "../pages/ProductDetailPage";
+import CartPage from "../pages/CartPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Navigate to="/gallery" replace />} />
-                <Route path="gallery" element={<Gallery />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="product/:id" element={<ProductDetail />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="checkout" element={<Checkout />} />
+                <Route path="gallery" element={<GalleryPage />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="product/:id" element={<ProductDetailPage />} />
+                <Route path="cart" element={<CartPage />} />
+                <Route path="checkout" element={<CheckoutPage />} />
             </Route>
         </Routes>
     );
