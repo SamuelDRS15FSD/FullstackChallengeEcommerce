@@ -1,49 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../../molecules/ProductCard";
-import { getProducts } from "../../../services/productService";
+import useProducts from "../../../hooks/useProducts";
 
-const ITEMS_PER_PAGE = 4;
 // TODO ESTUDIANTE: ajusta items por pagina y mejora UX de filtros/categorias.
 
 export default function Gallery() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    getProducts().then((data) => {
-      setProducts(data);
-      setLoading(false);
-    });
-  }, []);
-
-  const filteredProducts = useMemo(() => {
-    // TODO ESTUDIANTE: extender busqueda por categoria y precio.
-    const normalized = searchTerm.trim().toLowerCase();
-    if (!normalized) return products;
-
-    return products.filter((product) => {
-      return (
-        product.title.toLowerCase().includes(normalized) ||
-        product.description.toLowerCase().includes(normalized)
-      );
-    });
-  }, [products, searchTerm]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / ITEMS_PER_PAGE));
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const visibleProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-    setCurrentPage(1);
-  };
-
-  const goToPage = (page) => {
-    setCurrentPage(page);
-  };
-
+  const {
+    loading,
+    searchTerm,
+    filteredProducts,
+    visibleProducts,
+    currentPage,
+    totalPages,
+    handleSearchChange,
+    goToPage,
+  } = useProducts();
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -98,11 +68,10 @@ export default function Gallery() {
                   key={page}
                   type="button"
                   onClick={() => goToPage(page)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium border ${
-                    page === currentPage
-                      ? "border-purple-600 bg-purple-600 text-white"
-                      : "border-gray-300 hover:bg-gray-50"
-                  }`}
+                  className={`w-9 h-9 rounded-lg text-sm font-medium border ${page === currentPage
+                    ? "border-purple-600 bg-purple-600 text-white"
+                    : "border-gray-300 hover:bg-gray-50"
+                    }`}
                 >
                   {page}
                 </button>
