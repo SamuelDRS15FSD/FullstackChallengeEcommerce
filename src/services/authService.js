@@ -1,7 +1,6 @@
 import MOCK_USERS from "../mockdata/mock_users";
 
 const REGISTERED_USERS_KEY = "registeredUsers";
-const LOGGED_IN_USER_KEY = "loggedInUser";
 
 const mapUserShape = (user) => ({
   uid: String(user.id ?? Date.now()),
@@ -21,33 +20,7 @@ const getRegisteredUsers = () => {
   }
 };
 
-const getCurrentUser = () => {
-  try {
-    return JSON.parse(localStorage.getItem(LOGGED_IN_USER_KEY) || "null");
-  } catch {
-    return null;
-  }
-};
-
-const notifyAuthChange = () => {
-  window.dispatchEvent(new Event("template-auth-change"));
-};
-
-export const subscribeToAuthChanges = (callback) => {
-  const handler = () => callback(getCurrentUser());
-  handler();
-  window.addEventListener("storage", handler);
-  window.addEventListener("template-auth-change", handler);
-
-  return () => {
-    window.removeEventListener("storage", handler);
-    window.removeEventListener("template-auth-change", handler);
-  };
-};
-
 export const loginUser = async (email, password) => {
-  // TODO ESTUDIANTE:
-  // Si cambias a backend real, valida credenciales por API y maneja token/sesion.
   const registeredUsers = getRegisteredUsers();
   const allUsers = [...MOCK_USERS, ...registeredUsers];
   const foundUser = allUsers.find(
@@ -59,15 +32,11 @@ export const loginUser = async (email, password) => {
   }
 
   const normalizedUser = mapUserShape(foundUser);
-  localStorage.setItem(LOGGED_IN_USER_KEY, JSON.stringify(normalizedUser));
-  notifyAuthChange();
 
   return { success: true, user: normalizedUser };
 };
 
 export const registerFullUser = async (userData) => {
-  // TODO ESTUDIANTE:
-  // Agrega validaciones de formulario mas robustas (longitud, formato, etc).
   const registeredUsers = getRegisteredUsers();
   const allUsers = [...MOCK_USERS, ...registeredUsers];
   const emailExists = allUsers.some(
@@ -96,9 +65,5 @@ export const registerFullUser = async (userData) => {
 };
 
 export const logoutUser = async () => {
-  // TODO ESTUDIANTE:
-  // Si usas backend real, invalida token/sesion en servidor aqui.
-  localStorage.removeItem(LOGGED_IN_USER_KEY);
-  notifyAuthChange();
   return { success: true };
 };

@@ -1,36 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { subscribeToAuthChanges } from '../../../services/authService';
 import useCartStore from '../../../store/cartStore';
+import useAuthStore from '../../../store/useAuthStore';
 
 export default function NavBar() {
   const location = useLocation();
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const user = useAuthStore((state) => state.user);
   const totalItems = useCartStore((state) => state.getTotalItems());
 
-  useEffect(() => {
-    /*
-      // BACKUP: OLD LOCALSTORAGE METHOD
-      // const user = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
-      // setLoggedInUser(user);
-    */
-    const unsubscribe = subscribeToAuthChanges((currentUser) => {
-      setLoggedInUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   const isActive = (path) => location.pathname === path;
-
-  /*
-    // BACKUP: OLD LOCALSTORAGE METHOD
-    // const handleLogout = () => {
-    //   localStorage.removeItem('loggedInUser');
-    //   setLoggedInUser(null);
-    //   navigate('/login');
-    // };
-  */
 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -72,7 +49,7 @@ export default function NavBar() {
                 Cart ({totalItems})
               </Link>
             </li>
-            {loggedInUser ? (
+            {user ? (
               <li>
                 <Link
                   to="/profile"
