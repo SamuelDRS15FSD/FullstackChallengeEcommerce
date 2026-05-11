@@ -2,14 +2,17 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import smile from "../../../assets/smile.png";
 import { loginUser } from "../../../services/authService";
+import useAuthStore from '../../../store/useAuthStore';
 
 const Login = () => {
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [error, setError] = useState('');
+  const { login } = useAuthStore();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,6 +39,7 @@ const Login = () => {
       */
     const result = await loginUser(formData.email, formData.password);
     if (result.success) {
+      login(result.user);
       navigate('/gallery');
     } else {
       setError(result.error);
