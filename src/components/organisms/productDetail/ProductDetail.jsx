@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById } from '../../../services/productService';
-import { imageMap } from '../../../assets/imageMap';
 import useCartStore from '../../../store/cartStore';
 
 export default function ProductDetail() {
@@ -15,8 +14,12 @@ export default function ProductDetail() {
     const addItem = useCartStore((state) => state.addItem);
 
     useEffect(() => {
+        setLoading(true);
         getProductById(id).then((data) => {
             setProduct(data);
+            setLoading(false);
+        }).catch(() => {
+            setProduct(null);
             setLoading(false);
         });
     }, [id]);
@@ -28,8 +31,9 @@ export default function ProductDetail() {
     };
 
     const renderStars = (rate) => {
+        const numericRate = Number(rate) || 0;
         return Array.from({ length: 5 }, (_, i) => (
-            <span key={i} className={i < Math.round(rate) ? 'text-yellow-400' : 'text-gray-300'}>
+            <span key={i} className={i < Math.round(numericRate) ? 'text-yellow-400' : 'text-gray-300'}>
                 ★
             </span>
         ));
@@ -57,8 +61,6 @@ export default function ProductDetail() {
         );
     }
 
-    const resolvedImage = imageMap[product.image] ?? product.image;
-
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             {/* Back button */}
@@ -75,11 +77,11 @@ export default function ProductDetail() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="md:flex">
                     {/* Image */}
-                    <div className="md:w-1/2 relative">
+                    <div className="md:w-1/2 relative p-4 bg-white flex items-center justify-center">
                         <img
-                            src={resolvedImage}
+                            src={product.image}
                             alt={product.title}
-                            className="w-full h-80 md:h-full object-cover"
+                            className="max-w-full max-h-80 object-contain"
                         />
                         <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                             NUEVO
@@ -89,12 +91,12 @@ export default function ProductDetail() {
                     {/* Info */}
                     <div className="md:w-1/2 p-8 flex flex-col justify-between">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.title}</h1>
+                            <h1 className="text-2xl font-bold text-gray-900 mb-2">{product.title}</h1>
 
                             {/* Rating */}
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="text-xl">{renderStars(product.rate)}</div>
-                                <span className="text-sm text-gray-500">({product.rate} / 5)</span>
+                                <div className="text-xl">{renderStars(product.rating?.rate)}</div>
+                                <span className="text-sm text-gray-500">({product.rating?.rate || 0} / 5)</span>
                             </div>
 
                             {/* Price */}
@@ -103,7 +105,7 @@ export default function ProductDetail() {
                             </p>
 
                             {/* Description */}
-                            <p className="text-gray-600 leading-relaxed mb-8">
+                            <p className="text-gray-600 leading-relaxed mb-8 text-sm line-clamp-6">
                                 {product.description}
                             </p>
                         </div>

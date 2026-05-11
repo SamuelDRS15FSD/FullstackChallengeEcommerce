@@ -10,10 +10,17 @@ export default function useProducts() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        getProducts().then((data) => {
-            setProducts(data);
-            setLoading(false);
-        });
+        setLoading(true);
+        getProducts()
+            .then((data) => {
+                setProducts(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error loading products:", error);
+                setProducts([]);
+                setLoading(false);
+            });
     }, []);
 
     const filteredProducts = useMemo(() => {

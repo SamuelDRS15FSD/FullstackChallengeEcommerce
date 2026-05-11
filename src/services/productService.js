@@ -1,21 +1,23 @@
 import axios from "axios";
 
-export const getProducts = async () => {
-  const response = await axios.get(
-    "https://fakestoreapi.com/products"
-  );
+const API_URL = "https://fakestoreapi.com/products";
 
-  return response.data;
+export const getProducts = async () => {
+  try {
+    const response = await axios.get(API_URL);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
 
 export const getProductById = async (id) => {
   try {
-    const response = await axios.get(
-      `https://fakestoreapi.com/products/${id}`
-    );
-
+    const response = await axios.get(`${API_URL}/${id}`);
     return response.data;
-  } catch {
+  } catch (error) {
+    console.error(`Error fetching product ${id}:`, error);
     return null;
   }
 };

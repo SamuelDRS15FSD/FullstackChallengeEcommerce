@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import useCartStore from "../../../store/cartStore";
-import { imageMap } from "../../../assets/imageMap";
 
 export default function Cart() {
   // TODO ESTUDIANTE: agregar cupones, envio y resumen con impuestos.
@@ -37,14 +36,13 @@ export default function Cart() {
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
         <div className="bg-white rounded-2xl border border-gray-200 divide-y divide-gray-100">
           {items.map(({ product, quantity }) => {
-            const resolvedImage = imageMap[product.image] ?? product.image;
             const itemSubtotal = Number(product.price) * Number(quantity);
             return (
               <article key={product.id} className="p-4 flex gap-4 items-center">
                 <img
-                  src={resolvedImage}
+                  src={product.image}
                   alt={product.title}
-                  className="w-20 h-20 object-cover rounded-lg border border-gray-200"
+                  className="w-20 h-20 object-contain rounded-lg border border-gray-200 p-2"
                 />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-gray-900 truncate">{product.title}</h3>
