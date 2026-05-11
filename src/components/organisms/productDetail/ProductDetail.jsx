@@ -95,8 +95,8 @@ export default function ProductDetail() {
 
                             {/* Rating */}
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="text-xl">{renderStars(product.rating?.rate)}</div>
-                                <span className="text-sm text-gray-500">({product.rating?.rate || 0} / 5)</span>
+                                <div className="text-xl">{renderStars(product.rate)}</div>
+                                <span className="text-sm text-gray-500">({product.rate} / 5)</span>
                             </div>
 
                             {/* Price */}

@@ -10,7 +10,7 @@ function ProductCard({ product }) {
             <ProductImage src={product.image} alt={product.title}  />
             <ProductTitle title={product.title} />
             <ProductPrice price={product.price} />
-            <ProductRate rate={product.rating?.rate} />
+            <ProductRate rate={product.rate} />
         </Link>
     );
 }
