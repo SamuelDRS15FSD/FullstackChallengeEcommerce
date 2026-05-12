@@ -30,7 +30,7 @@ export default function NavBar() {
                 to="/gallery"
                 className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
                   isActive('/gallery')
-                    ? 'text-blue-600 border-blue-600'
+                    ? 'text-purple-600 border-purple-600'
                     : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
@@ -42,7 +42,7 @@ export default function NavBar() {
                 to="/cart"
                 className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
                   isActive('/cart')
-                    ? 'text-blue-600 border-blue-600'
+                    ? 'text-purple-600 border-purple-600'
                     : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
@@ -55,7 +55,7 @@ export default function NavBar() {
                   to="/profile"
                   className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
                     isActive('/profile')
-                      ? 'text-blue-600 border-blue-600'
+                      ? 'text-purple-600 border-purple-600'
                       : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                   }`}
                 >
@@ -69,7 +69,7 @@ export default function NavBar() {
                     to="/login"
                     className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
                       isActive('/login')
-                        ? 'text-blue-600 border-blue-600'
+                        ? 'text-purple-600 border-purple-600'
                         : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                     }`}
                   >
@@ -81,7 +81,7 @@ export default function NavBar() {
                     to="/register"
                     className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
                       isActive('/register')
-                        ? 'text-blue-600 border-blue-600'
+                        ? 'text-purple-600 border-purple-600'
                         : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                     }`}
                   >
