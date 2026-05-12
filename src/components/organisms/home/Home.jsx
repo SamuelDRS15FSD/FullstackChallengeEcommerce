@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../../molecules/ProductCard";
 import useProducts from "../../../hooks/useProducts";
+import InteractiveHeroBackground from "../../atoms/home/InteractiveHeroBackground";
 
 export default function Home() {
   const { visibleProducts, loading } = useProducts();
@@ -8,8 +9,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="relative bg-white overflow-hidden border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 text-center lg:pt-32 lg:pb-36">
+      <section className="relative bg-white overflow-hidden border-b border-slate-200 min-h-[60vh] flex items-center">
+        <InteractiveHeroBackground />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 text-center lg:pt-32 lg:pb-36 w-full">
           <p className="text-sm font-semibold text-violet-600 uppercase tracking-widest mb-4">
             Colección 2025 - 2026
           </p>
