@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useCartStore from "../../../store/cartStore";
+import { formatPriceCOP } from "../../../utils/formatters";
 
 export default function Checkout() {
   const items = useCartStore((state) => state.items);
@@ -122,14 +123,14 @@ export default function Checkout() {
                   {product.title} x {quantity}
                 </span>
                 <span className="font-medium text-gray-900">
-                  ${(Number(product.price) * Number(quantity)).toFixed(2)}
+                  {formatPriceCOP(product.price * quantity)}
                 </span>
               </div>
             ))}
           </div>
           <div className="border-t border-gray-200 pt-3 flex justify-between text-lg font-bold text-gray-900">
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatPriceCOP(total)}</span>
           </div>
         </aside>
       </div>

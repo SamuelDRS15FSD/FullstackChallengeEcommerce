@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useCartStore from "../../../store/cartStore";
+import { formatPriceCOP } from "../../../utils/formatters";
 
 export default function Cart() {
   const items = useCartStore((state) => state.items);
@@ -45,9 +46,9 @@ export default function Cart() {
                 />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-gray-900 truncate">{product.title}</h3>
-                  <p className="text-sm text-gray-500">${Number(product.price).toFixed(2)} c/u</p>
+                  <p className="text-sm text-gray-500">{formatPriceCOP(product.price)} c/u</p>
                   <p className="text-sm font-semibold text-gray-800 mt-1">
-                    Subtotal: ${itemSubtotal.toFixed(2)}
+                    Subtotal: {formatPriceCOP(product.price * quantity)}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -87,7 +88,7 @@ export default function Cart() {
           </div>
           <div className="flex justify-between text-lg font-bold text-gray-900 mb-6">
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatPriceCOP(total)}</span>
           </div>
           <Link
             to="/checkout"

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById } from '../../../services/productService';
 import useCartStore from '../../../store/cartStore';
+import { formatPriceCOP, translateCategory } from '../../../utils/formatters';
 
 export default function ProductDetail() {
     const { id } = useParams();
@@ -91,6 +92,9 @@ export default function ProductDetail() {
                     {/* Info */}
                     <div className="md:w-1/2 p-8 flex flex-col justify-between">
                         <div>
+                            <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-2 block">
+                                {translateCategory(product.category)}
+                            </span>
                             <h1 className="text-2xl font-bold text-gray-900 mb-2">{product.title}</h1>
 
                             {/* Rating */}
@@ -101,7 +105,7 @@ export default function ProductDetail() {
 
                             {/* Price */}
                             <p className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-6">
-                                ${product.price}
+                                {formatPriceCOP(product.price)}
                             </p>
 
                             {/* Description */}
