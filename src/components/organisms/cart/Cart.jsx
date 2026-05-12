@@ -13,15 +13,18 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <section className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl border border-gray-200 p-10 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Tu carrito esta vacio</h2>
-          <p className="text-gray-500 mb-6">
-            Agrega productos desde la galeria para iniciar la compra.
+      <section className="max-w-4xl mx-auto px-4 py-16">
+        <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center flex flex-col items-center">
+          <svg className="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">Tu carrito está vacío</h2>
+          <p className="text-slate-500 mb-8 max-w-xs">
+            Aún no has agregado ningún producto. ¡Explora nuestra colección y encuentra algo que te guste!
           </p>
           <Link
             to="/products"
-            className="inline-flex px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:opacity-90"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-colors"
           >
             Ir a productos
           </Link>
@@ -31,70 +34,81 @@ export default function Cart() {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">Carrito de compras</h2>
+    <section className="max-w-6xl mx-auto px-4 py-10">
+      <h2 className="text-3xl font-bold text-slate-900 mb-8">Carrito de compras</h2>
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
-        <div className="bg-white rounded-2xl border border-gray-200 divide-y divide-gray-100">
-          {items.map(({ product, quantity }) => {
-            const itemSubtotal = Number(product.price) * Number(quantity);
-            return (
-              <article key={product.id} className="p-4 flex gap-4 items-center">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-20 h-20 object-contain rounded-lg border border-gray-200 p-2"
-                />
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-gray-900 truncate">{product.title}</h3>
-                  <p className="text-sm text-gray-500">{formatPriceCOP(product.price)} c/u</p>
-                  <p className="text-sm font-semibold text-gray-800 mt-1">
-                    Subtotal: {formatPriceCOP(product.price * quantity)}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => decrementItem(product.id)}
-                    className="w-8 h-8 rounded-lg border border-gray-300 hover:bg-gray-50"
-                  >
-                    -
-                  </button>
-                  <span className="w-8 text-center text-sm font-semibold">{quantity}</span>
-                  <button
-                    type="button"
-                    onClick={() => incrementItem(product.id)}
-                    className="w-8 h-8 rounded-lg border border-gray-300 hover:bg-gray-50"
-                  >
-                    +
-                  </button>
-                </div>
+        {/* Items list */}
+        <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100">
+          {items.map(({ product, quantity }) => (
+            <article key={product.id} className="p-4 flex gap-4 items-center">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-20 h-20 object-contain rounded-xl border border-slate-100 p-2 bg-white flex-shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-slate-900 text-sm line-clamp-2">{product.title}</h3>
+                <p className="text-xs text-slate-400 mt-1">{formatPriceCOP(product.price)} c/u</p>
+                <p className="text-sm font-bold text-slate-800 mt-1">
+                  Subtotal: {formatPriceCOP(product.price * quantity)}
+                </p>
+              </div>
+              <div className="flex items-center gap-1 flex-shrink-0">
                 <button
                   type="button"
-                  onClick={() => removeItem(product.id)}
-                  className="text-sm text-red-600 hover:text-red-700"
+                  onClick={() => decrementItem(product.id)}
+                  className="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 text-lg font-bold flex items-center justify-center"
                 >
-                  Quitar
+                  −
                 </button>
-              </article>
-            );
-          })}
+                <span className="w-8 text-center text-sm font-semibold text-slate-900">{quantity}</span>
+                <button
+                  type="button"
+                  onClick={() => incrementItem(product.id)}
+                  className="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 text-lg font-bold flex items-center justify-center"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeItem(product.id)}
+                className="text-xs text-red-500 hover:text-red-700 font-medium flex-shrink-0 ml-1"
+              >
+                Quitar
+              </button>
+            </article>
+          ))}
         </div>
 
-        <aside className="bg-white rounded-2xl border border-gray-200 p-6 h-fit">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Resumen</h3>
-          <div className="flex justify-between text-gray-600 mb-3">
-            <span>Productos</span>
-            <span>{items.length}</span>
+        {/* Order summary */}
+        <aside className="bg-white rounded-2xl border border-slate-200 p-6 h-fit">
+          <h3 className="text-lg font-bold text-slate-900 mb-4">Resumen del pedido</h3>
+          <div className="space-y-2 mb-4 pb-4 border-b border-slate-100">
+            <div className="flex justify-between text-sm text-slate-500">
+              <span>Artículos ({items.length})</span>
+              <span>{formatPriceCOP(total)}</span>
+            </div>
+            <div className="flex justify-between text-sm text-slate-500">
+              <span>Envío</span>
+              <span className="text-green-600 font-medium">Gratis</span>
+            </div>
           </div>
-          <div className="flex justify-between text-lg font-bold text-gray-900 mb-6">
+          <div className="flex justify-between text-lg font-bold text-slate-900 mb-6">
             <span>Total</span>
             <span>{formatPriceCOP(total)}</span>
           </div>
           <Link
             to="/checkout"
-            className="w-full inline-flex justify-center px-4 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:opacity-90"
+            className="w-full inline-flex justify-center items-center px-4 py-3 rounded-xl bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-colors"
           >
-            Ir a checkout
+            Proceder al pago
+          </Link>
+          <Link
+            to="/products"
+            className="w-full inline-flex justify-center items-center mt-3 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors"
+          >
+            Continuar comprando
           </Link>
         </aside>
       </div>

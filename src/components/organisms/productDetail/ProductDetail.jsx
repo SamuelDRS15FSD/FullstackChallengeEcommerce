@@ -43,7 +43,7 @@ export default function ProductDetail() {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-64">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500"></div>
             </div>
         );
     }
@@ -51,12 +51,12 @@ export default function ProductDetail() {
     if (!product) {
         return (
             <div className="flex flex-col items-center justify-center h-64 space-y-4">
-                <p className="text-xl text-gray-600">Producto no encontrado.</p>
+                <p className="text-xl text-slate-600">Producto no encontrado.</p>
                 <button
                     onClick={() => navigate('/products')}
-                    className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+                    className="px-6 py-2 bg-violet-600 text-white font-medium rounded-lg hover:bg-violet-700 transition-colors"
                 >
-                    Volver a la galería
+                    Volver al catálogo
                 </button>
             </div>
         );
@@ -67,7 +67,7 @@ export default function ProductDetail() {
             {/* Back button */}
             <button
                 onClick={() => navigate('/products')}
-                className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors mb-6 group"
+                className="flex items-center gap-2 text-slate-500 hover:text-violet-600 transition-colors mb-6 group"
             >
                 <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -84,7 +84,7 @@ export default function ProductDetail() {
                             alt={product.title}
                             className="max-w-full max-h-80 object-contain"
                         />
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        <div className="absolute top-4 left-4 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                             NUEVO
                         </div>
                     </div>
@@ -92,10 +92,10 @@ export default function ProductDetail() {
                     {/* Info */}
                     <div className="md:w-1/2 p-8 flex flex-col justify-between">
                         <div>
-                            <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-2 block">
+                            <span className="text-sm font-semibold text-violet-600 uppercase tracking-wider mb-2 block">
                                 {translateCategory(product.category)}
                             </span>
-                            <h1 className="text-2xl font-bold text-gray-900 mb-2">{product.title}</h1>
+                            <h1 className="text-2xl font-bold text-slate-900 mb-2">{product.title}</h1>
 
                             {/* Rating */}
                             <div className="flex items-center gap-2 mb-4">
@@ -104,7 +104,7 @@ export default function ProductDetail() {
                             </div>
 
                             {/* Price */}
-                            <p className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-6">
+                            <p className="text-4xl font-extrabold text-violet-600 mb-6">
                                 {formatPriceCOP(product.price)}
                             </p>
 
@@ -143,7 +143,7 @@ export default function ProductDetail() {
                                 className={`w-full py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 ${
                                     added
                                         ? 'bg-green-500 scale-95'
-                                        : 'bg-gradient-to-r from-purple-500 via-purple-600 to-pink-500 hover:opacity-90 hover:shadow-lg hover:shadow-purple-200 active:scale-95'
+                                        : 'bg-violet-600 hover:bg-violet-700 shadow-md shadow-violet-200 active:scale-95'
                                 }`}
                             >
                                 {added ? '✓ Agregado al carrito' : 'Agregar al carrito'}

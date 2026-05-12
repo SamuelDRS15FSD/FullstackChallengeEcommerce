@@ -9,12 +9,12 @@ function ProductCard({ product }) {
     return (
         <Link 
             to={`/product/${product.id}`} 
-            className="group flex flex-col h-full bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-purple-300 transition-all duration-300"
+            className="group flex flex-col h-full bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:border-violet-300 transition-all duration-300"
         >
             <ProductImage src={product.image} alt={product.title}  />
             <div className="flex-1 flex flex-col p-5">
                 <div className="flex-1 mb-4">
-                    <span className="text-xs font-medium text-purple-600 uppercase tracking-wider mb-2 block">
+                    <span className="text-xs font-medium text-violet-600 uppercase tracking-wider mb-2 block">
                         {translateCategory(product.category)}
                     </span>
                     <ProductTitle title={product.title} />

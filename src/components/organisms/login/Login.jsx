@@ -38,8 +38,8 @@ const Login = () => {
             {/* Icono similar al de la imagen */}
             <img src={smile} alt="Smile Icon" className="w-[64px] h-[64px]" />
           </div>
-          <h1 className="text-4xl font-bold text-slate-800 mb-2">Welcome!</h1>
-          <p className="text-slate-400 text-lg">Sign in to your account</p>
+          <h1 className="text-4xl font-bold text-slate-800 mb-2">¡Hola!</h1>
+          <p className="text-slate-400 text-lg">Inicia sesión en tu cuenta</p>
         </div>
 
         {error && (
@@ -52,10 +52,10 @@ const Login = () => {
 
           {/* Input de Email */}
           <div className="relative group">
-            <label className="block text-slate-400 text-lg mb-1 group-focus-within:text-blue-500 transition-colors">
-              Email
+            <label className="block text-slate-400 text-lg mb-1 group-focus-within:text-violet-500 transition-colors">
+              Correo electrónico
             </label>
-            <div className="relative border-b border-gray-200 group-focus-within:border-blue-500 transition-all">
+            <div className="relative border-b border-gray-200 group-focus-within:border-violet-500 transition-all">
               <input
                 type="email"
                 name="email"
@@ -74,10 +74,10 @@ const Login = () => {
 
           {/* Input de Password */}
           <div className="relative group">
-            <label className="block text-slate-400 text-lg mb-1 group-focus-within:text-blue-500 transition-colors">
-              Password
+            <label className="block text-slate-400 text-lg mb-1 group-focus-within:text-violet-500 transition-colors">
+              Contraseña
             </label>
-            <div className="relative border-b border-gray-200 group-focus-within:border-blue-500 transition-all">
+            <div className="relative border-b border-gray-200 group-focus-within:border-violet-500 transition-all">
               <input
                 type="password"
                 name="password"
@@ -101,19 +101,19 @@ const Login = () => {
                 type="checkbox"
                 className="w-5 h-5 border-gray-300 rounded focus:ring-blue-500 transition-all"
               />
-              <span className="text-lg">remember me?</span>
+              <span className="text-lg">¿Recordarme?</span>
             </label>
-            <a href="#" className="text-blue-500 hover:text-blue-600 transition-colors text-lg">
-              forgot password?
+            <a href="#" className="text-violet-500 hover:text-violet-600 transition-colors text-lg">
+              ¿Olvidaste tu contraseña?
             </a>
           </div>
 
           {/* Botón de Login */}
           <button
             type="submit"
-            className="w-3/5 py-4 btn-dna hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center space-x-3 transition-all shadow-lg shadow-blue-200 active:scale-95"
+            className="w-3/5 py-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl flex items-center justify-center space-x-3 transition-all shadow-md shadow-violet-200 active:scale-95"
           >
-            <span className="text-xl">Login</span>
+            <span className="text-xl">Ingresar</span>
             <svg
               className="w-6 h-6"
               fill="none"

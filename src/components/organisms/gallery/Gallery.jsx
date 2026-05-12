@@ -15,7 +15,7 @@ export default function Gallery() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-500"></div>
       </div>
     );
   }
@@ -71,8 +71,8 @@ export default function Gallery() {
                   type="button"
                   onClick={() => goToPage(page)}
                   className={`w-9 h-9 rounded-lg text-sm font-medium border ${page === currentPage
-                    ? "border-purple-600 bg-purple-600 text-white"
-                    : "border-gray-300 hover:bg-gray-50"
+                    ? "border-violet-600 bg-violet-600 text-white"
+                    : "border-slate-200 text-slate-600 hover:bg-slate-50"
                     }`}
                 >
                   {page}
