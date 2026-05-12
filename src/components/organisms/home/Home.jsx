@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative bg-white overflow-hidden border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 text-center lg:pt-32 lg:pb-36">
           <p className="text-sm font-semibold text-violet-600 uppercase tracking-widest mb-4">
-            Colección 2025
+            Colección 2025 - 2026
           </p>
           <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl mb-6">
             <span className="block">Bienvenido a</span>
