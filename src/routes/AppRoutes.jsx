@@ -1,7 +1,8 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Layout from "../components/templates/Layout";
 
+import HomePage from "../pages/HomePage";
 import GalleryPage from "../pages/GalleryPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -14,7 +15,7 @@ export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
-                <Route index element={<Navigate to="/gallery" replace />} />
+                <Route index element={<HomePage />} />
                 <Route path="gallery" element={<GalleryPage />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="register" element={<RegisterPage />} />

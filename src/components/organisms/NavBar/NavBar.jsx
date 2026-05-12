@@ -19,12 +19,24 @@ export default function NavBar() {
             className="flex items-center space-x-2 text-2xl font-bold hover:opacity-80 transition-opacity"
           >
             <span className="bg-gradient-to-r from-purple-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">
-              MyStore
+              SpartaStore
             </span>
           </Link>
 
           {/* Navigation Links */}
           <ul className="hidden md:flex items-center space-x-8">
+            <li>
+              <Link
+                to="/"
+                className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
+                  isActive('/')
+                    ? 'text-purple-600 border-purple-600'
+                    : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                }`}
+              >
+                Home
+              </Link>
+            </li>
             <li>
               <Link
                 to="/gallery"
