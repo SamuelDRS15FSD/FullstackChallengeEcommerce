@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import useCartStore from "../../../store/cartStore";
 
 export default function Cart() {
-  // TODO ESTUDIANTE: agregar cupones, envio y resumen con impuestos.
   const items = useCartStore((state) => state.items);
   const incrementItem = useCartStore((state) => state.incrementItem);
   const decrementItem = useCartStore((state) => state.decrementItem);

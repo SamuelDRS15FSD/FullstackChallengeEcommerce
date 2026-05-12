@@ -1,8 +1,6 @@
 import ProductCard from "../../molecules/ProductCard";
 import useProducts from "../../../hooks/useProducts";
 
-// TODO ESTUDIANTE: ajusta items por pagina y mejora UX de filtros/categorias.
-
 export default function Gallery() {
   const {
     loading,
