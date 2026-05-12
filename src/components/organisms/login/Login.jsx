@@ -1,6 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import useAuthStore from '../../../store/useAuthStore';
+import InteractiveHeroBackground from '../../atoms/home/InteractiveHeroBackground';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,6 +29,9 @@ const Login = () => {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] relative overflow-hidden bg-slate-950 flex items-center justify-center p-4 selection:bg-violet-500/30">
+      {/* Interactive Background */}
+      <InteractiveHeroBackground color="255, 255, 255" opacity={0.15} particleCountFactor={10000} />
+      
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-violet-600/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-fuchsia-600/10 blur-[120px] rounded-full pointer-events-none" />
