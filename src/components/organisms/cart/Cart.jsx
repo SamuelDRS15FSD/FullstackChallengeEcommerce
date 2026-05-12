@@ -20,7 +20,7 @@ export default function Cart() {
             Agrega productos desde la galeria para iniciar la compra.
           </p>
           <Link
-            to="/gallery"
+            to="/products"
             className="inline-flex px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:opacity-90"
           >
             Ir a productos

@@ -21,7 +21,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-4">
             <Link
-              to="/gallery"
+              to="/products"
               className="px-8 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 md:py-4 md:text-lg md:px-10 shadow-lg shadow-purple-200 transition-all active:scale-95"
             >
               Explorar Colección
@@ -34,14 +34,14 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8 tracking-tight">Categorías Populares</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link to="/gallery" className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 aspect-video md:aspect-[2/1] flex items-center justify-center hover:border-purple-300 transition-colors shadow-sm hover:shadow-md">
+          <Link to="/products" className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 aspect-video md:aspect-[2/1] flex items-center justify-center hover:border-purple-300 transition-colors shadow-sm hover:shadow-md">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-50 group-hover:opacity-100 transition-opacity"></div>
             <div className="relative z-10 text-center">
               <h3 className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">Moda y Ropa</h3>
               <p className="text-gray-500 mt-2 font-medium">Ver catálogo &rarr;</p>
             </div>
           </Link>
-          <Link to="/gallery" className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 aspect-video md:aspect-[2/1] flex items-center justify-center hover:border-purple-300 transition-colors shadow-sm hover:shadow-md">
+          <Link to="/products" className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 aspect-video md:aspect-[2/1] flex items-center justify-center hover:border-purple-300 transition-colors shadow-sm hover:shadow-md">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-50 group-hover:opacity-100 transition-opacity"></div>
             <div className="relative z-10 text-center">
               <h3 className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">Electrónica y Joyería</h3>
@@ -55,7 +55,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mb-10">
         <div className="flex items-end justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Productos Destacados</h2>
-          <Link to="/gallery" className="text-purple-600 font-medium hover:text-purple-700 hidden sm:block">
+          <Link to="/products" className="text-purple-600 font-medium hover:text-purple-700 hidden sm:block">
             Ver todos &rarr;
           </Link>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
         )}
         
         <div className="mt-8 text-center sm:hidden">
-          <Link to="/gallery" className="text-purple-600 font-medium hover:text-purple-700 block p-2">
+          <Link to="/products" className="text-purple-600 font-medium hover:text-purple-700 block p-2">
             Ver todos los productos &rarr;
           </Link>
         </div>

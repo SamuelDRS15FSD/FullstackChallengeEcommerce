@@ -39,14 +39,14 @@ export default function NavBar() {
             </li>
             <li>
               <Link
-                to="/gallery"
+                to="/products"
                 className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
-                  isActive('/gallery')
+                  isActive('/products')
                     ? 'text-purple-600 border-purple-600'
                     : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
-                Gallery
+                Products
               </Link>
             </li>
             <li>

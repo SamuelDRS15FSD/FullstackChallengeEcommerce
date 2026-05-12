@@ -35,7 +35,7 @@ export default function Checkout() {
             Este checkout es simulado para el taller. Puedes personalizar este flujo.
           </p>
           <Link
-            to="/gallery"
+            to="/products"
             className="inline-flex px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:opacity-90"
           >
             Volver a la galeria
@@ -54,7 +54,7 @@ export default function Checkout() {
           </h2>
           <p className="text-gray-500 mb-6">Agrega productos al carrito antes de ir al checkout.</p>
           <Link
-            to="/gallery"
+            to="/products"
             className="inline-flex px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:opacity-90"
           >
             Ir a productos

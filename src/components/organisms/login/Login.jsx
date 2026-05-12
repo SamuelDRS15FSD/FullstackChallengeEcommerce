@@ -23,7 +23,7 @@ const Login = () => {
 
     const result = await loginAction(formData.email, formData.password);
     if (result.success) {
-      navigate('/gallery');
+      navigate('/products');
     } else {
       setError(result.error);
     }

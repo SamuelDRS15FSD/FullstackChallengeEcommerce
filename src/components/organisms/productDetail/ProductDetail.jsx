@@ -53,7 +53,7 @@ export default function ProductDetail() {
             <div className="flex flex-col items-center justify-center h-64 space-y-4">
                 <p className="text-xl text-gray-600">Producto no encontrado.</p>
                 <button
-                    onClick={() => navigate('/gallery')}
+                    onClick={() => navigate('/products')}
                     className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                     Volver a la galería
@@ -66,7 +66,7 @@ export default function ProductDetail() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             {/* Back button */}
             <button
-                onClick={() => navigate('/gallery')}
+                onClick={() => navigate('/products')}
                 className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors mb-6 group"
             >
                 <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
